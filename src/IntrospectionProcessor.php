@@ -41,7 +41,6 @@ class IntrospectionProcessor implements ProcessorInterface
      */
     public function __invoke(array $record): array
     {
-        var_dump($record['level']);
         if ($record['level'] < $this->level) {
             return $record;
         }
