@@ -13,7 +13,7 @@ message に送信された文字列や配列、例外をパースして Newrelic
 ## Get Started
 ### Installation
 ~~~ 
-composer install aainc/newrelic-logger 
+composer require aainc/newrelic-logger
 ~~~
 
 ### Initialize
