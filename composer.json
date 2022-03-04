@@ -1,0 +1,34 @@
+{
+    "name": "aainc/newrelic-logger",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "happy_ryo",
+            "email": "iwama@aainc.co.jp"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "laravel/laravel": "^6.0|^7.0|^8.0",
+        "newrelic/monolog-enricher": "^1.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpunit/phpunit": "~9.5.13",
+        "mockery/mockery": "~1.5.0"
+    },
+    "scripts": {
+        "php-cs-fixer": "php-cs-fixer fix src"
+    },
+    "autoload": {
+        "psr-4": {
+            "Aainc\\NewrelicLogger\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Aainc\\NewrelicLogger\\Test\\": "tests/"
+        }
+    }
+}
