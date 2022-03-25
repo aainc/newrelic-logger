@@ -34,7 +34,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Aainc\\NewreliLogger\\NewrelicLoggerServiceProvider"
+                "Aainc\\NewrelicLogger\\NewrelicLoggerServiceProvider"
             ]
         }
     }
