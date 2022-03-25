@@ -71,15 +71,17 @@ class IntrospectionProcessor implements ProcessorInterface
         $args = $trace[$lineCount]['args'] ?? null;
         $arguments = [];
 
-        foreach ($args as $key => $value) {
-            try {
-                $parameter = new ReflectionParameter([$trace[$lineCount]['class'], $trace[$lineCount]['function']], $key);
-            } catch (\ReflectionException $e) {
-                continue;
+        if ($args !== null) {
+            foreach ($args as $key => $value) {
+                try {
+                    $parameter = new ReflectionParameter([$trace[$lineCount]['class'], $trace[$lineCount]['function']], $key);
+                } catch (\ReflectionException $e) {
+                    continue;
+                }
+                $arguments[$parameter->getName()] = $value instanceof Request ? [
+                    'params' => $value->all(),
+                ] : $value;
             }
-            $arguments[$parameter->getName()] = $value instanceof Request ? [
-                'params' => $value->all(),
-            ] : $value;
         }
         $record['extra'] = array_merge(
             $record['extra'],
