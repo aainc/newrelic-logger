@@ -20,5 +20,9 @@ class NewrelicLoggerServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
+        $this->mergeConfigFrom(__DIR__.'/config/aa-newrelic-logger.php', 'aa-newrelic-logger');
+        $this->publishes([
+            __DIR__.'/config/aa-newrelic-logger.php' => config_path('aa-newrelic-logger.php')
+        ]);
     }
 }
