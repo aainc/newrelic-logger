@@ -18,7 +18,8 @@ class NewRelicLogs
 
         foreach ($logger->getHandlers() as $handler) {
             if (is_a($handler, 'NewRelic\Monolog\Enricher\Handler')) {
-                $licenseKey = config('aa-newrelic-logger.license_key');
+                $licenseKey = config('aa-newrelic-logger.license_key', null);
+
                 if ($licenseKey !== null) {
                     $handler->setLicenseKey($licenseKey);
                 }

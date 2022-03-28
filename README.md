@@ -19,7 +19,7 @@ composer require aainc/newrelic-logger
 ### Initialize
 config/logging.php
 
-~~~
+~~~PHP
       'stack' => [
             'driver' => 'stack',
             'channels' => ['single','newrelic'],
@@ -34,24 +34,54 @@ config/logging.php
             'tap' => [\Aainc\NewrelicLogger\NewRelicLogs::class],
             'level' => env('LOG_LEVEL', 'debug'),
             'formatter' => 'default',
-            'with' => 
-                'key' => 'Your Newrelic api key'
-            ]
         ],
 ~~~
 
+
+config/aa-newrelic-logger.php
+
+
+~~~PHP
+
+<?php
+
+return [
+    // Minimum log level describing additional information (default:DEBUG)
+    'log_level'   => \Monolog\Logger::DEBUG,
+    // This may be useful if the New Relic PHP agent is not installed, or if you wish to log to a different account or region.
+    // (default:null)
+    'license_key' => null,
+    // Can use this to log output with server environment variable information.
+    'extra_data'  => []
+];
+
+~~~
+
+Example
+
+~~~PHP
+<?php
+
+return [
+    'log_level'     => \Monolog\Logger::DEBUG,
+    'license_key'   => getenv('NEWRELIC_LICENSE_KEY'),
+    'extra_data'    => [
+        'host_name' => getenv('HOST_NAME')
+    ]
+];
+~~~
 
 ### Send Logs
 
 #### Send text message
 
-~~~
+~~~PHP
 Log::debug('Send text);
 ~~~
 
 #### Send array message
 
-~~~
+~~~PHP
 Log::debug('array', [
     'hoge' => 'fuga',
     'hogehoge' => 'fugafuga'
@@ -60,7 +90,7 @@ Log::debug('array', [
 
 #### Send Exception
 
-~~~
+~~~PHP
 Log::debug(new Exception('message');
 ~~~
 
