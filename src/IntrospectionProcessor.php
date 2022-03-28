@@ -92,7 +92,8 @@ class IntrospectionProcessor implements ProcessorInterface
                     'class'    => $trace[$lineCount]['class'] ?? null,
                     'function' => $trace[$lineCount]['function'] ?? null,
                 ],
-                $arguments
+                $arguments,
+                config('aa-newrelic-logger.extra_data', [])
             )
         );
 
