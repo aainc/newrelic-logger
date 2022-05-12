@@ -74,7 +74,7 @@ class IntrospectionProcessor implements ProcessorInterface
         if ($args !== null) {
             foreach ($args as $key => $value) {
                 try {
-                    $parameter = new ReflectionParameter([$trace[$lineCount]['class'], $trace[$lineCount]['function']], $key);
+                    $parameter = new ReflectionParameter([$trace[$lineCount]['class'] ?? null, $trace[$lineCount]['function'] ?? null], $key);
                 } catch (\ReflectionException $e) {
                     continue;
                 }
